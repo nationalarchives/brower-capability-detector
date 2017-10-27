@@ -1,4 +1,4 @@
-export const all_features_detected_by_modernizr = [
+var all_features_detected_by_modernizr = [
     {
         'name': 'Ambient Light Events',
         'description': 'Detects support for the API that provides information about the ambient light levels, as detected by the device\'s light detector, in terms of lux units.',
