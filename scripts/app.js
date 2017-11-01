@@ -11005,6 +11005,10 @@ BrowserCapabilities.prototype.render_detects = function () {
 };
 
 $(document).ready(function () {
+
+    // Remove the 'hidden' class from HTML because of conflict with TNA global styles
+    $('html').removeClass('hidden');
+
     var bc = new BrowserCapabilities();
 });
 
