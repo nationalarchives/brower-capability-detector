@@ -14,7 +14,6 @@
 </div>
 <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
         crossorigin="anonymous"></script>
-<script src="scripts/all_features_detected_by_modernizr.js"></script>
-<script src="scripts/app.js"></script>
+<script src="scripts/app.min.js"></script>
 </body>
 </html>

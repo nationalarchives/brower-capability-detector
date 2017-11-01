@@ -6,6 +6,10 @@ A simple tool to detect the capabilities of a user's browser and provide an easy
 
 This is a very simple application which does not rely on any new language features or techniques. Simply clone the repository and run `php -S localhost:8000` from the project root. You will then be able to see the contents of `index.php` by visiting `http://localhost:8000`
 
+## Using GruntJS
+
+GruntJS is used for asset bundling and minification. To enable this you'll need to install GruntJS globally, then run `npm install` from the project root, after which you'll be able to kick off the associated Grunt tasks (listed in the `Gruntfile.js`)
+
 ## Azure site 
 
 There is an Azure site watching the `master` branch of this repository. The site can be found at [http://browser-capability-detector.azurewebsites.net](http://browser-capability-detector.azurewebsites.net)

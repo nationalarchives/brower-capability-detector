@@ -1,0 +1,27 @@
+{
+  "name": "browser-capability-detector",
+  "version": "1.0.0",
+  "description": "A simple tool to detect the capabilities of a user's browser and provide an easy mechanism for them to send this information to us.",
+  "main": "app.js",
+  "dependencies": {
+    "grunt": "^1.0.1"
+  },
+  "devDependencies": {
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-uglify": "^3.1.0",
+    "grunt-contrib-watch": "^1.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nationalarchives/brower-capability-detector.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nationalarchives/brower-capability-detector/issues"
+  },
+  "homepage": "https://github.com/nationalarchives/brower-capability-detector#readme"
+}
