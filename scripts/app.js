@@ -10980,10 +10980,12 @@ BrowserCapabilities.prototype.capture_undefined_detects = function (detect) {
 
 BrowserCapabilities.prototype.initialize = function () {
     this.$app_container = $("#app-container");
+    this.$output = $("#app-output");
     this.detect_capability_keys();
     this.set_capabilities();
     this.render_headline();
-    this.render_detects();
+    this.render_detect_information_to_user();
+    this.populate_detects_output();
 };
 
 BrowserCapabilities.prototype.render_headline = function () {
@@ -10993,7 +10995,7 @@ BrowserCapabilities.prototype.render_headline = function () {
     this.$app_container.append($headline);
 };
 
-BrowserCapabilities.prototype.render_detects = function () {
+BrowserCapabilities.prototype.render_detect_information_to_user = function () {
     var $list = $("<ul>");
 
     for (var i = 0; i < this.capabilities.length; i++) {
@@ -11002,6 +11004,19 @@ BrowserCapabilities.prototype.render_detects = function () {
     }
 
     this.$app_container.append($list);
+};
+
+BrowserCapabilities.prototype.populate_detects_output = function () {
+
+    var output = ['[START]'];
+
+    for (var i = 0; i < this.capabilities.length; i++) {
+        output.push(this.capabilities[i].name);
+    }
+
+    output.push('[' + this.capabilities.length + ' detects identified][END]');
+
+    this.$output.val(output.join(','));
 };
 
 $(document).ready(function () {

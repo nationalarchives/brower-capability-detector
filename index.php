@@ -10,7 +10,7 @@
 </head>
 <body>
 <div id="app-container">
-    <textarea about="app-output">JavaScript is unavailable</textarea>
+    <textarea id="app-output">JavaScript is unavailable</textarea>
 </div>
 <script src="scripts/jquery.1.12.4.local.js"></script>
 <script src="scripts/app.min.js"></script>
