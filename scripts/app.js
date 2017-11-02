@@ -11053,7 +11053,7 @@ BrowserCapabilities.prototype.set_capabilities_output_string = function () {
 
 BrowserCapabilities.prototype.manage_user_events = function () {
     $(document).on('click', '#toggle-capabilities-list', function (e) {
-        var text = $(e.target).text() === 'Show capability descriptions' ? 'Show capability descriptions' : 'Hide capability descriptions';
+        var text = $(e.target).text() === 'Show capability descriptions' ? 'Hide capability descriptions' : 'Show capability descriptions';
         $(e.target).text(text);
 
         $('#capabilities-list').slideToggle();
