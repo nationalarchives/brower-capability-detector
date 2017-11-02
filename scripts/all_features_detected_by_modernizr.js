@@ -225,7 +225,7 @@ var all_features_detected_by_modernizr = {
     },
     "unicoderange": {
         "name": "Unicode Range",
-        "description": "" // NEED MORE
+        "description": "Support for unicode characters in the current document"
     },
     "unicode": {
         "name": "Unicode characters",
@@ -245,15 +245,15 @@ var all_features_detected_by_modernizr = {
     },
     "vml": {
         "name": "VML",
-        "description": "Support for VML"  // NEED MORE
+        "description": "Support for Vector Markup Language (VML)"
     },
     "webgl": {
         "name": "WebGL",
-        "description": ""  // NEED MORE
+        "description": "Support for Web Graphics Library"
     },
     "websockets": {
         "name": "Web Sockets Support",
-        "description": ""  // NEED MORE
+        "description": "Support for interactive communication sessions with a web server"
     },
     "webintents": {
         "name": "Web Intents",
@@ -297,15 +297,15 @@ var all_features_detected_by_modernizr = {
     },
     "todataurljpeg": {
         "name": "canvas.toDataURL JPEG type support",
-        "description": ""  // NEED MORE
+        "description": "Support for representing JPEG as DataURL"
     },
     "todataurlpng": {
         "name": "canvas.toDataURL PNG type support",
-        "description": ""  // NEED MORE
+        "description": "Support for representing PNG as DataURL"
     },
     "todataurlwebp": {
         "name": "canvas.toDataURL WebP type support",
-        "description": ""  // NEED MORE
+        "description": "Support for representing WebP as DataURL"
     },
     "getrandomvalues": {
         "name": "getRandomValues",
@@ -333,7 +333,7 @@ var all_features_detected_by_modernizr = {
     },
     "backgroundcliptext": {
         "name": "CSS Background Clip Text",
-        "description": "Support for the ability to control an element's background clip text"  // NEED MORE
+        "description": "Support for the ability to control an element's background clip text"
     },
     "bgpositionshorthand": {
         "name": "Background Position Shorthand",
