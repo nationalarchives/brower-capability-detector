@@ -12,8 +12,7 @@
 <div id="app-container">
     <textarea about="app-output">JavaScript is unavailable</textarea>
 </div>
-<script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
-        crossorigin="anonymous"></script>
+<script src="scripts/jquery.1.12.4.local.js"></script>
 <script src="scripts/app.min.js"></script>
 </body>
 </html>

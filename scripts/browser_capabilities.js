@@ -119,6 +119,10 @@ BrowserCapabilities.prototype.render_detect_information_to_user = function () {
     this.$app_container.append($list);
 };
 
+BrowserCapabilities.prototype.populate_detects_output = function () {
+    console.log('Hello');
+};
+
 $(document).ready(function () {
 
     // Remove the 'hidden' class from HTML because of conflict with TNA global styles
