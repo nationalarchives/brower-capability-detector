@@ -98,7 +98,7 @@ BrowserCapabilities.prototype.initialize = function () {
     this.detect_capability_keys();
     this.set_capabilities();
     this.render_headline();
-    this.render_detects();
+    this.render_detect_information_to_user();
 };
 
 BrowserCapabilities.prototype.render_headline = function () {
@@ -108,7 +108,7 @@ BrowserCapabilities.prototype.render_headline = function () {
     this.$app_container.append($headline);
 };
 
-BrowserCapabilities.prototype.render_detects = function () {
+BrowserCapabilities.prototype.render_detect_information_to_user = function () {
     var $list = $("<ul>");
 
     for (var i = 0; i < this.capabilities.length; i++) {
