@@ -10981,6 +10981,7 @@ BrowserCapabilities.prototype.capture_undefined_detects = function (detect) {
 BrowserCapabilities.prototype.initialize = function () {
     this.$app_container = $("#app-container");
     this.$output = $("#app-output");
+    this.apply_styles();
     this.detect_capability_keys();
     this.set_capabilities();
     this.render_headline();
@@ -10996,6 +10997,7 @@ BrowserCapabilities.prototype.render_headline = function () {
 };
 
 BrowserCapabilities.prototype.render_detect_information_to_user = function () {
+
     var $list = $("<ul>");
 
     for (var i = 0; i < this.capabilities.length; i++) {
@@ -11017,6 +11019,13 @@ BrowserCapabilities.prototype.populate_detects_output = function () {
     output.push('[' + this.capabilities.length + ' detects identified][END]');
 
     this.$output.val(output.join(','));
+};
+
+BrowserCapabilities.prototype.apply_styles = function () {
+    this.$output.css({
+        'width' : '100%',
+        'height' : '700px'
+    })
 };
 
 $(document).ready(function () {
