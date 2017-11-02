@@ -10991,10 +10991,18 @@ BrowserCapabilities.prototype.initialize = function () {
 };
 
 BrowserCapabilities.prototype.render_headline = function () {
-    var $headline = $("<h2>", {
-        text: this.capabilities.length + " features detected in your browser"
+
+    var $headline = $("<p>", {
+        'text': 'JavaScript has run successfully and detected the ' + this.capabilities.length + ' browser capabilities shown below.'
     });
-    this.$app_container.append($headline);
+
+    var $instructions = $("<p>", {
+        'text': 'Please copy the contents of the text area below and email it to gwyn.jones@nationalarchives.gsi.gov.uk. Further information about the capabilities we have detected is shown below.'
+    });
+
+    this.$app_container
+        .append($headline)
+        .append($instructions);
 };
 
 BrowserCapabilities.prototype.render_detect_information_to_user = function () {
