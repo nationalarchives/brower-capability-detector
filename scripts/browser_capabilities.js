@@ -96,12 +96,13 @@ BrowserCapabilities.prototype.capture_undefined_detects = function (detect) {
 BrowserCapabilities.prototype.initialize = function () {
     this.$app_container = $("#app-container");
     this.$output = $("#app-output");
-    this.apply_styles();
     this.detect_capability_keys();
     this.set_capabilities();
     this.render_headline();
     this.render_detect_information_to_user();
     this.populate_detects_output();
+    this.manage_user_events();
+    this.apply_styles();
 };
 
 BrowserCapabilities.prototype.render_headline = function () {
@@ -113,14 +114,30 @@ BrowserCapabilities.prototype.render_headline = function () {
 
 BrowserCapabilities.prototype.render_detect_information_to_user = function () {
 
-    var $list = $("<ul>");
+    var $container = $('<div>');
+
+    var $toggle = $('<button>', {
+        'text': 'Show capability descriptions',
+        'id': 'toggle-capabilities-list'
+    });
+
+    var $list = $("<ul id='capabilities-list'>").css({ 'display': 'none' });
 
     for (var i = 0; i < this.capabilities.length; i++) {
         var $item = $("<li><strong>" + this.capabilities[i].name + ":</strong> " + this.capabilities[i].description + "</li>");
         $list.append($item);
     }
 
-    this.$app_container.append($list);
+    var $description = $('<p>', {
+        'text' : 'Click the button below to view descriptions of all the capabilities detected'
+    });
+
+    $container
+        .append($toggle)
+        .append($list)
+        .append($description);
+
+    $container.insertAfter(this.$output);
 };
 
 BrowserCapabilities.prototype.populate_detects_output = function () {
@@ -136,10 +153,29 @@ BrowserCapabilities.prototype.populate_detects_output = function () {
     this.$output.val(output.join(','));
 };
 
+BrowserCapabilities.prototype.manage_user_events = function () {
+    $(document).on('click', '#toggle-capabilities-list', function (e) {
+        var text = $(e.target).text() === 'Show capability descriptions' ? 'Show capability descriptions' : 'Hide capability descriptions';
+        $(e.target).text(text);
+
+        $('#capabilities-list').slideToggle();
+    })
+};
+
 BrowserCapabilities.prototype.apply_styles = function () {
     this.$output.css({
-        'width' : '100%',
-        'height' : '700px'
+        'width': '100%',
+        'height': '700px'
+    });
+
+    $('#toggle-capabilities-list').css({
+        'height': '36px',
+        'border': 'none',
+        'background': '#008484',
+        'color': '#fff',
+        'font-size': '16px',
+        'padding': '0 10px',
+        'margin': '0.5em 0'
     })
 };
 
