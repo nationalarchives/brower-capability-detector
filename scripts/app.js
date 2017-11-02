@@ -10009,7 +10009,7 @@ Detects whether web workers can use `transferables` objects.
     },
     "unicoderange": {
         "name": "Unicode Range",
-        "description": "" // NEED MORE
+        "description": "Support for unicode characters in the current document"
     },
     "unicode": {
         "name": "Unicode characters",
@@ -10029,15 +10029,15 @@ Detects whether web workers can use `transferables` objects.
     },
     "vml": {
         "name": "VML",
-        "description": "Support for VML"  // NEED MORE
+        "description": "Support for Vector Markup Language (VML)"
     },
     "webgl": {
         "name": "WebGL",
-        "description": ""  // NEED MORE
+        "description": "Support for Web Graphics Library"
     },
     "websockets": {
         "name": "Web Sockets Support",
-        "description": ""  // NEED MORE
+        "description": "Support for interactive communication sessions with a web server"
     },
     "webintents": {
         "name": "Web Intents",
@@ -10081,15 +10081,15 @@ Detects whether web workers can use `transferables` objects.
     },
     "todataurljpeg": {
         "name": "canvas.toDataURL JPEG type support",
-        "description": ""  // NEED MORE
+        "description": "Support for representing JPEG as DataURL"
     },
     "todataurlpng": {
         "name": "canvas.toDataURL PNG type support",
-        "description": ""  // NEED MORE
+        "description": "Support for representing PNG as DataURL"
     },
     "todataurlwebp": {
         "name": "canvas.toDataURL WebP type support",
-        "description": ""  // NEED MORE
+        "description": "Support for representing WebP as DataURL"
     },
     "getrandomvalues": {
         "name": "getRandomValues",
@@ -10117,7 +10117,7 @@ Detects whether web workers can use `transferables` objects.
     },
     "backgroundcliptext": {
         "name": "CSS Background Clip Text",
-        "description": "Support for the ability to control an element's background clip text"  // NEED MORE
+        "description": "Support for the ability to control an element's background clip text"
     },
     "bgpositionshorthand": {
         "name": "Background Position Shorthand",
@@ -10999,7 +10999,7 @@ BrowserCapabilities.prototype.render_detect_information_to_user = function () {
     var $list = $("<ul>");
 
     for (var i = 0; i < this.capabilities.length; i++) {
-        var $item = $("<li><strong>" + this.capabilities[i].name + "</strong> " + this.capabilities[i].description + "</li>");
+        var $item = $("<li><strong>" + this.capabilities[i].name + ":</strong> " + this.capabilities[i].description + "</li>");
         $list.append($item);
     }
 

@@ -114,7 +114,7 @@ BrowserCapabilities.prototype.render_detect_information_to_user = function () {
     var $list = $("<ul>");
 
     for (var i = 0; i < this.capabilities.length; i++) {
-        var $item = $("<li><strong>" + this.capabilities[i].name + "</strong> " + this.capabilities[i].description + "</li>");
+        var $item = $("<li><strong>" + this.capabilities[i].name + ":</strong> " + this.capabilities[i].description + "</li>");
         $list.append($item);
     }
 
