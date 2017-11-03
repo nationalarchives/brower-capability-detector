@@ -11178,7 +11178,6 @@ BrowserCapabilities.prototype.initialize = function () {
     this.render_summary();
     this.render_detect_information_to_user();
     this.populate_detects_output();
-    this.manage_user_events();
     this.apply_styles();
 };
 
@@ -11285,13 +11284,9 @@ BrowserCapabilities.prototype.set_capability_ids_output = function () {
 
 BrowserCapabilities.prototype.render_summary = function () {
 
-    var $headline = $("<p>", {
-        'text': 'JavaScript has run successfully and detected ' + this.capabilities.length + ' capabilities for your browser'
-    });
+    $('#javascript-unavailable').remove();
 
     var link_href = '?subject=Browser%20Capability%20Survey&body=' + encodeURI(this.capability_ids_output);
-
-    var $instructions = $("<p>We are collating this information so that we can make best use of available capabilities when developing tools to support the digital transfer process. If you have any questions about this process please contact Gwyn Jones, Lead Front End Developer at The National Archives, who is collating this information</p>");
 
     var $call_to_action = $("<a>", {
         'text': 'Send browser information to The National Archives',
@@ -11300,8 +11295,6 @@ BrowserCapabilities.prototype.render_summary = function () {
     });
 
     this.$app_container
-        .append($headline)
-        .append($instructions)
         .append($call_to_action)
 };
 
@@ -11309,13 +11302,11 @@ BrowserCapabilities.prototype.render_detect_information_to_user = function () {
 
     var $container = $('<div>');
 
-    var $toggle = $('<button>', {
-        'text': 'Show capability descriptions',
-        'id': 'toggle-capabilities-list',
-        'class': 'send-email'
+    var $heading = $('<h2>', {
+        'text': 'Full list of browser capabilities detected'
     });
 
-    var $list = $("<ul id='capabilities-list'>").css({ 'display': 'none' });
+    var $list = $("<ul id='capabilities-list'>");
 
     for (var i = 0; i < this.capabilities.length; i++) {
         var $item = $("<li><strong>" + this.capabilities[i].name + " (ID: " + this.capabilities[i].short_key + "):</strong> " + this.capabilities[i].description + "</li>");
@@ -11323,13 +11314,13 @@ BrowserCapabilities.prototype.render_detect_information_to_user = function () {
     }
 
     var $description = $('<p>', {
-        'text': 'Click the button below to view descriptions of all the capabilities detected'
+        'text': 'JavaScript has run successfully and detected ' + this.capabilities.length + ' browser capabilities. Click the button below to view descriptions of all the capabilities detected'
     });
 
     $container
-        .append($toggle)
-        .append($list)
-        .append($description);
+        .append($description)
+        .append($heading)
+        .append($list);
 
     $container.insertAfter(this.$output);
 };
@@ -11338,20 +11329,8 @@ BrowserCapabilities.prototype.populate_detects_output = function () {
     this.$output.val(this.capability_ids_output);
 };
 
-BrowserCapabilities.prototype.manage_user_events = function () {
-    $(document).on('click', '#toggle-capabilities-list', function (e) {
-        var text = $(e.target).text() === 'Show capability descriptions' ? 'Hide capability descriptions' : 'Show capability descriptions';
-        $(e.target).text(text);
-
-        $('#capabilities-list').slideToggle();
-    })
-};
-
 BrowserCapabilities.prototype.apply_styles = function () {
-    this.$output.css({
-        'width': '100%',
-        'height': '100px'
-    });
+    this.$output.css({});
 };
 
 $(document).ready(function () {
