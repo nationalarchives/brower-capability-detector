@@ -13,7 +13,7 @@ BrowserCapabilities.prototype.initialize = function () {
     this.detect_capability_keys();
     this.set_capabilities();
     this.set_capability_ids_output();
-    this.render_headline();
+    this.render_summary();
     this.render_detect_information_to_user();
     this.populate_detects_output();
     this.manage_user_events();
@@ -121,7 +121,7 @@ BrowserCapabilities.prototype.set_capability_ids_output = function () {
     this.capability_ids_output = output.join(',');
 };
 
-BrowserCapabilities.prototype.render_headline = function () {
+BrowserCapabilities.prototype.render_summary = function () {
 
     var $headline = $("<p>", {
         'text': 'JavaScript has run successfully and detected ' + this.capabilities.length + ' capabilities for your browser'
