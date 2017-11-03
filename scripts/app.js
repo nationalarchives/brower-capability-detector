@@ -11166,7 +11166,7 @@ function BrowserCapabilities() {
     this.capability_keys = [];
     this.capabilities = [];
     this.capabilities_output_string = '';
-    this.capability_short_keys_for_email  = '';
+    this.capability_short_keys_for_email = '';
     this.initialize();
 }
 
@@ -11287,12 +11287,12 @@ BrowserCapabilities.prototype.set_capability_shortkeys_for_email = function () {
 BrowserCapabilities.prototype.render_headline = function () {
 
     var $headline = $("<p>", {
-        'text': 'JavaScript has run successfully and detected the browser capabilities shown in the text area below.'
+        'text': 'JavaScript has run successfully and detected ' + this.capabilities.length + ' capabilities for your browser'
     });
 
     var link_href = 'mailto:gwyn.jones@nationalarchives.gov.uk&body=' + encodeURI(this.capability_short_keys_for_email);
 
-    var $instructions = $("<p>Please copy the contents of the text area below and email it to <a href='mailto:gwyn.jones@nationalarchives.gsi.gov.uk" + link_href + "'>gwyn.jones@nationalarchives.gsi.gov.uk</a></p>");
+    var $instructions = $("<p>We are collating this information so that we can make best use of available capabilities when developing tools to support the digital transfer process. Please <a href='mailto:gwyn.jones@nationalarchives.gsi.gov.uk" + link_href + "'>click here</a> to send this information to Gwyn Jones, Lead Front End Developer, who is collating this information</p>");
 
     this.$app_container
         .append($headline)
@@ -11311,12 +11311,12 @@ BrowserCapabilities.prototype.render_detect_information_to_user = function () {
     var $list = $("<ul id='capabilities-list'>").css({ 'display': 'none' });
 
     for (var i = 0; i < this.capabilities.length; i++) {
-        var $item = $("<li><strong>" + this.capabilities[i].name + ":</strong> " + this.capabilities[i].description + "</li>");
+        var $item = $("<li><strong>" + this.capabilities[i].name + " (ID: " + this.capabilities[i].short_key + "):</strong> " + this.capabilities[i].description + "</li>");
         $list.append($item);
     }
 
     var $description = $('<p>', {
-        'text' : 'Click the button below to view descriptions of all the capabilities detected'
+        'text': 'Click the button below to view descriptions of all the capabilities detected'
     });
 
     $container
