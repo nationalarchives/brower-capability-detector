@@ -11169,6 +11169,19 @@ function BrowserCapabilities() {
     this.initialize();
 }
 
+BrowserCapabilities.prototype.initialize = function () {
+    this.$app_container = $("#app-container");
+    this.$output = $("#app-output");
+    this.detect_capability_keys();
+    this.set_capabilities();
+    this.set_capability_ids_output();
+    this.render_headline();
+    this.render_detect_information_to_user();
+    this.populate_detects_output();
+    this.manage_user_events();
+    this.apply_styles();
+};
+
 BrowserCapabilities.prototype.detect_capability_keys = function () {
     for (var detect in Modernizr) {
         if (Modernizr[detect] === true) {
@@ -11256,18 +11269,6 @@ BrowserCapabilities.prototype.capture_undefined_detects = function (detect) {
     }
 };
 
-BrowserCapabilities.prototype.initialize = function () {
-    this.$app_container = $("#app-container");
-    this.$output = $("#app-output");
-    this.detect_capability_keys();
-    this.set_capabilities();
-    this.set_capability_ids_output();
-    this.render_headline();
-    this.render_detect_information_to_user();
-    this.populate_detects_output();
-    this.manage_user_events();
-    this.apply_styles();
-};
 
 BrowserCapabilities.prototype.set_capability_ids_output = function () {
 
@@ -11288,13 +11289,20 @@ BrowserCapabilities.prototype.render_headline = function () {
         'text': 'JavaScript has run successfully and detected ' + this.capabilities.length + ' capabilities for your browser'
     });
 
-    var link_href = 'mailto:gwyn.jones@nationalarchives.gov.uk&body=' + encodeURI(this.capability_ids_output);
+    var link_href = '?subject=Browser%20Capability%20Survey&body=' + encodeURI(this.capability_ids_output);
 
-    var $instructions = $("<p>We are collating this information so that we can make best use of available capabilities when developing tools to support the digital transfer process. Please <a href='mailto:gwyn.jones@nationalarchives.gsi.gov.uk" + link_href + "'>click here</a> to send this information to Gwyn Jones, Lead Front End Developer, who is collating this information</p>");
+    var $instructions = $("<p>We are collating this information so that we can make best use of available capabilities when developing tools to support the digital transfer process. If you have any questions about this process please contact Gwyn Jones, Lead Front End Developer at The National Archives, who is collating this information</p>");
+
+    var $call_to_action = $("<a>", {
+        'text': 'Send browser information to The National Archives',
+        'href': 'mailto:gwyn.jones@nationalarchives.gsi.gov.uk' + link_href,
+        'class': 'send-email'
+    });
 
     this.$app_container
         .append($headline)
-        .append($instructions);
+        .append($instructions)
+        .append($call_to_action)
 };
 
 BrowserCapabilities.prototype.render_detect_information_to_user = function () {
@@ -11303,7 +11311,8 @@ BrowserCapabilities.prototype.render_detect_information_to_user = function () {
 
     var $toggle = $('<button>', {
         'text': 'Show capability descriptions',
-        'id': 'toggle-capabilities-list'
+        'id': 'toggle-capabilities-list',
+        'class': 'send-email'
     });
 
     var $list = $("<ul id='capabilities-list'>").css({ 'display': 'none' });
@@ -11343,16 +11352,6 @@ BrowserCapabilities.prototype.apply_styles = function () {
         'width': '100%',
         'height': '100px'
     });
-
-    $('#toggle-capabilities-list').css({
-        'height': '36px',
-        'border': 'none',
-        'background': '#008484',
-        'color': '#fff',
-        'font-size': '16px',
-        'padding': '0 10px',
-        'margin': '0.5em 0'
-    })
 };
 
 $(document).ready(function () {
