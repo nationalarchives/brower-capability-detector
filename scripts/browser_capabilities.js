@@ -4,6 +4,7 @@ function BrowserCapabilities() {
     this.capability_keys = [];
     this.capabilities = [];
     this.capabilities_output_string = '';
+    this.capability_short_keys_for_email  = '';
     this.initialize();
 }
 
@@ -100,11 +101,25 @@ BrowserCapabilities.prototype.initialize = function () {
     this.detect_capability_keys();
     this.set_capabilities();
     this.set_capabilities_output_string();
+    this.set_capability_shortkeys_for_email();
     this.render_headline();
     this.render_detect_information_to_user();
     this.populate_detects_output();
     this.manage_user_events();
     this.apply_styles();
+};
+
+BrowserCapabilities.prototype.set_capability_shortkeys_for_email = function () {
+
+    var output = ['[START]'];
+
+    for (var i = 0; i < this.capabilities.length; i++) {
+        output.push(this.capabilities[i].short_key);
+    }
+
+    output.push('[' + this.capabilities.length + ' detects identified][END]');
+
+    this.capability_short_keys_for_email = output.join(',');
 };
 
 BrowserCapabilities.prototype.render_headline = function () {
@@ -113,7 +128,7 @@ BrowserCapabilities.prototype.render_headline = function () {
         'text': 'JavaScript has run successfully and detected the browser capabilities shown in the text area below.'
     });
 
-    var link_href = 'mailto:gwyn.jones@nationalarchives.gov.uk&body=' + encodeURI(this.capabilities_output_string);
+    var link_href = 'mailto:gwyn.jones@nationalarchives.gov.uk&body=' + encodeURI(this.capability_short_keys_for_email);
 
     var $instructions = $("<p>Please copy the contents of the text area below and email it to <a href='mailto:gwyn.jones@nationalarchives.gsi.gov.uk" + link_href + "'>gwyn.jones@nationalarchives.gsi.gov.uk</a></p>");
 
