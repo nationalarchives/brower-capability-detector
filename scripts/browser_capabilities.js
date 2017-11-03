@@ -100,7 +100,6 @@ BrowserCapabilities.prototype.capture_undefined_detects = function (detect) {
             this.capability_keys.push('atobbtoa');
             break;
         default:
-            console.log(detect);
             break;
     }
 };
