@@ -11175,7 +11175,6 @@ BrowserCapabilities.prototype.initialize = function () {
     this.detect_capability_keys();
     this.set_capabilities();
     this.set_capability_ids_output();
-    this.render_summary();
     this.render_detect_information_to_user();
     this.populate_detects_output();
     this.apply_styles();
@@ -11282,7 +11281,8 @@ BrowserCapabilities.prototype.set_capability_ids_output = function () {
     this.capability_ids_output = output.join(',');
 };
 
-BrowserCapabilities.prototype.render_summary = function () {
+BrowserCapabilities.prototype.render_detect_information_to_user = function () {
+
 
     $('#javascript-unavailable').remove();
 
@@ -11294,15 +11294,9 @@ BrowserCapabilities.prototype.render_summary = function () {
         'class': 'send-email'
     });
 
-    this.$app_container
-        .append($call_to_action)
-};
-
-BrowserCapabilities.prototype.render_detect_information_to_user = function () {
-
     var $container = $('<div>');
 
-    var $heading = $('<h2>', {
+    var $heading = $('<h3>', {
         'text': 'Full list of browser capabilities detected'
     });
 
@@ -11314,15 +11308,16 @@ BrowserCapabilities.prototype.render_detect_information_to_user = function () {
     }
 
     var $description = $('<p>', {
-        'text': 'JavaScript has run successfully and detected ' + this.capabilities.length + ' browser capabilities. Click the button below to view descriptions of all the capabilities detected'
+        'text': 'JavaScript has run successfully and detected ' + this.capabilities.length + ' browser capabilities. All detects are shown below. Please click the button below to open an email pre-populated with the ID for each detect and addressed to Gwyn Jones.'
     });
 
     $container
         .append($description)
+        .append($call_to_action)
         .append($heading)
         .append($list);
 
-    $container.insertAfter(this.$output);
+    this.$output.append($container);
 };
 
 BrowserCapabilities.prototype.populate_detects_output = function () {
@@ -11330,7 +11325,11 @@ BrowserCapabilities.prototype.populate_detects_output = function () {
 };
 
 BrowserCapabilities.prototype.apply_styles = function () {
-    this.$output.css({});
+    this.$output.css({
+        'border': '1px solid #DDD',
+        'background-color': 'rgb(253,253,253)',
+        'padding': '0 1em'
+    })
 };
 
 $(document).ready(function () {
