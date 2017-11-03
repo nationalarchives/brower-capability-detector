@@ -11165,8 +11165,7 @@ Detects whether web workers can use `transferables` objects.
 function BrowserCapabilities() {
     this.capability_keys = [];
     this.capabilities = [];
-    this.capabilities_output_string = '';
-    this.capability_short_keys_for_email = '';
+    this.capability_ids_output = '';
     this.initialize();
 }
 
@@ -11262,8 +11261,7 @@ BrowserCapabilities.prototype.initialize = function () {
     this.$output = $("#app-output");
     this.detect_capability_keys();
     this.set_capabilities();
-    this.set_capabilities_output_string();
-    this.set_capability_shortkeys_for_email();
+    this.set_capability_ids_output();
     this.render_headline();
     this.render_detect_information_to_user();
     this.populate_detects_output();
@@ -11271,7 +11269,7 @@ BrowserCapabilities.prototype.initialize = function () {
     this.apply_styles();
 };
 
-BrowserCapabilities.prototype.set_capability_shortkeys_for_email = function () {
+BrowserCapabilities.prototype.set_capability_ids_output = function () {
 
     var output = ['[START]'];
 
@@ -11281,7 +11279,7 @@ BrowserCapabilities.prototype.set_capability_shortkeys_for_email = function () {
 
     output.push('[' + this.capabilities.length + ' detects identified][END]');
 
-    this.capability_short_keys_for_email = output.join(',');
+    this.capability_ids_output = output.join(',');
 };
 
 BrowserCapabilities.prototype.render_headline = function () {
@@ -11290,7 +11288,7 @@ BrowserCapabilities.prototype.render_headline = function () {
         'text': 'JavaScript has run successfully and detected ' + this.capabilities.length + ' capabilities for your browser'
     });
 
-    var link_href = 'mailto:gwyn.jones@nationalarchives.gov.uk&body=' + encodeURI(this.capability_short_keys_for_email);
+    var link_href = 'mailto:gwyn.jones@nationalarchives.gov.uk&body=' + encodeURI(this.capability_ids_output);
 
     var $instructions = $("<p>We are collating this information so that we can make best use of available capabilities when developing tools to support the digital transfer process. Please <a href='mailto:gwyn.jones@nationalarchives.gsi.gov.uk" + link_href + "'>click here</a> to send this information to Gwyn Jones, Lead Front End Developer, who is collating this information</p>");
 
@@ -11328,19 +11326,7 @@ BrowserCapabilities.prototype.render_detect_information_to_user = function () {
 };
 
 BrowserCapabilities.prototype.populate_detects_output = function () {
-    this.$output.val(this.capabilities_output_string);
-};
-
-BrowserCapabilities.prototype.set_capabilities_output_string = function () {
-    var output = ['[START]'];
-
-    for (var i = 0; i < this.capabilities.length; i++) {
-        output.push(this.capabilities[i].name);
-    }
-
-    output.push('[' + this.capabilities.length + ' detects identified][END]');
-
-    this.capabilities_output_string = output.join(',');
+    this.$output.val(this.capability_ids_output);
 };
 
 BrowserCapabilities.prototype.manage_user_events = function () {
@@ -11355,7 +11341,7 @@ BrowserCapabilities.prototype.manage_user_events = function () {
 BrowserCapabilities.prototype.apply_styles = function () {
     this.$output.css({
         'width': '100%',
-        'height': '700px'
+        'height': '100px'
     });
 
     $('#toggle-capabilities-list').css({
